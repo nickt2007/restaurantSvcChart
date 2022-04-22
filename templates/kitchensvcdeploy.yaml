@@ -4,6 +4,7 @@ metadata:
   name: {{ .Release.Name}}-kitchensvcapp
   labels:
     app: kitchensvc
+    version: v0
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
