@@ -6,12 +6,13 @@ metadata:
     {{- include "restaurant-svc.labels" . | nindent 4 }}
 spec:
   #TODO implement 'port', 'type', 'targetPort' here. Leverage the properties we defined in Values.yaml.
-  type:
+  type: LoadBalancer
   ports:
-    - port:
-      targetPort:
+    - port: 8764
+      targetPort: 8764
       protocol: TCP
       name: http
   selector:
-    #TODO implement proper selector here to bind this service and kitchensvc pods.
-    app:
+    app: kitchensvc
+#    #TODO implement proper selector here to bind this service and kitchensvc pods.
+#    app: s

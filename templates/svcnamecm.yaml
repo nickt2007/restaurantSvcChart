@@ -5,5 +5,5 @@ metadata:
 data:
   #TODO define correct restaurant service name and kitchen service name here, for
   #order service to call APIs from them.
-  restaurantsvc_name:
-  kitchensvc_name:
+  restaurantsvc_name: r
+  kitchensvc_name: k

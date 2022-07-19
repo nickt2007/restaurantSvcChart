@@ -17,6 +17,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
+        app: kitchensvc
         #TODO define proper label/labels for pod template.
     spec:
       {{- with .Values.imagePullSecrets }}
@@ -31,25 +32,26 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           #TODO implement image path by repo and tag, from Values.yaml
-          image:
+          image: nickta/micincu2:kitchen-service.2022-07-01_14-40-07
 
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
+            - containerPort: 8764
           #TODO implement proper port, readiness and liveness probes here.
           #TODO please provide a reasonable initialDelaySeconds here. You can try firstly remove it and see
           #TODO what will happen per you app.
-          livenessProbe:
-            httpGet:
-              path:
-              port: http
-            initialDelaySeconds:
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path:
-              port: http
-            initialDelaySeconds:
-            periodSeconds: 10
-          resources:
+#          livenessProbe:
+#            httpGet:
+#              path:
+#              port: http
+#            initialDelaySeconds:
+#            periodSeconds: 10
+#          readinessProbe:
+#            httpGet:
+#              path:
+#              port: http
+#            initialDelaySeconds:
+#            periodSeconds: 10
+#          resources:
           #TODO define proper hardware resources here. Leverage resources definition
           # in Values.yaml
